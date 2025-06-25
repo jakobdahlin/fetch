@@ -17,6 +17,7 @@ import {
   ArrowRight,
   Sparkles,
 } from "lucide-react"
+import { useState } from "react";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
@@ -116,37 +117,7 @@ const pricingTiers = [
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-orange-100 via-pink-100 to-white">
-      {/* Navigation */}
-      <motion.nav
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="fixed top-0 w-full z-50 backdrop-blur-lg bg-white/30 border-b border-orange-400/30"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-red-400 to-orange-300 rounded-full flex items-center justify-center">
-                <Heart className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-2xl font-bold text-orange-800">
-                K9Coach
-              </span>
-            </div>
-            <div className="flex items-center space-x-4">
-              <Button variant="ghost" className="text-black hover:text-orange-600">
-                Features
-              </Button>
-              <Button variant="ghost" className="text-black hover:text-orange-600">
-                Pricing
-              </Button>
-              <Button className="rounded-full bg-gradient-to-r from-red-400 to-orange-300 hover:from-red-400 hover:to-orange-300 text-white">
-                Get Started
-              </Button>
-            </div>
-          </div>
-        </div>
-      </motion.nav>
+
 
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
@@ -270,8 +241,8 @@ export default function LandingPage() {
   className="text-center mb-16 block md:hidden" 
   {...fadeInUp}
 >
-  <h2 className="text-4xl md:text-5xl font-bold mb-4">
-    <span className="bg-gradient-to-r from-red-400 via-orange-300 to-red-400 bg-clip-text text-transparent">
+  <h2 className="text-3xl md:text-5xl font-bold mb-4">
+    <span className="bg-gradient-to-r from-red-400 to-orange-300 bg-clip-text text-transparent">
       Features That Actually Help
     </span>
   </h2>
