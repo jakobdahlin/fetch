@@ -6,6 +6,16 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+::selection {
+  background-color: transparent;
+  color: #1f1f1f;
+}
+
+::-moz-selection {
+  background-color: #ffe5b4;
+  color: #1f1f1f;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

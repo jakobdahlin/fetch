@@ -67,9 +67,9 @@ const features = [
 
 const pricingTiers = [
   {
-    name: "Free",
-    price: "$0",
-    period: "forever",
+    name: "Basic",
+    price: "$20",
+    period: "month",
     description: "Perfect for getting started",
     features: [
       "Basic AI chat for simple questions",
@@ -82,8 +82,8 @@ const pricingTiers = [
   },
   {
     name: "Pro",
-    price: "$12",
-    period: "per month",
+    price: "$49",
+    period: "month",
     description: "Everything you need to be a better dog owner",
     features: [
       "Full AI Dog Coach with image analysis",
@@ -98,7 +98,7 @@ const pricingTiers = [
   },
   {
     name: "Annual",
-    price: "$99",
+    price: "$499",
     period: "per year",
     description: "Best value for committed owners",
     features: [
@@ -115,32 +115,32 @@ const pricingTiers = [
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-blue-50 to-green-50">
+    <div className="min-h-screen bg-gradient-to-b from-orange-100 via-pink-100 to-white">
       {/* Navigation */}
       <motion.nav
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="fixed top-0 w-full z-50 backdrop-blur-md bg-white/70 border-b border-white/20"
+        className="fixed top-0 w-full z-50 backdrop-blur-lg bg-white/30 border-b border-orange-400/30"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-pink-500 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-r from-red-400 to-orange-300 rounded-full flex items-center justify-center">
                 <Heart className="w-5 h-5 text-white" />
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
-                Pawtential
+              <span className="text-2xl font-bold text-orange-800">
+                K9Coach
               </span>
             </div>
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" className="text-gray-700 hover:text-orange-600">
+              <Button variant="ghost" className="text-black hover:text-orange-600">
                 Features
               </Button>
-              <Button variant="ghost" className="text-gray-700 hover:text-orange-600">
+              <Button variant="ghost" className="text-black hover:text-orange-600">
                 Pricing
               </Button>
-              <Button className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white">
+              <Button className="rounded-full bg-gradient-to-r from-red-400 to-orange-300 hover:from-red-400 hover:to-orange-300 text-white">
                 Get Started
               </Button>
             </div>
@@ -161,10 +161,10 @@ export default function LandingPage() {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-              className="inline-flex items-center space-x-2 bg-gradient-to-r from-orange-100 to-pink-100 backdrop-blur-sm border border-orange-200/50 rounded-full px-6 py-2 mb-8"
+              className="inline-flex items-center space-x-2 shadow-xl shadow-orange-600/20 bg-white/30 backdrop-blur-sm border border-orange-200/50 rounded-full px-6 py-2 mb-8"
             >
               <Sparkles className="w-4 h-4 text-orange-500" />
-              <span className="text-sm font-medium text-orange-700">Teach humans how to be better dog owners</span>
+              <span className="text-sm font-medium text-orange-800">Teach humans how to be better dog owners</span>
             </motion.div>
 
             <motion.h1
@@ -173,21 +173,21 @@ export default function LandingPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
             >
-              <span className="bg-gradient-to-r from-orange-600 via-pink-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-red-400 to-orange-300 bg-clip-text text-transparent">
                 Unlock Your Dog's
               </span>
               <br />
-              <span className="text-gray-800">Pawtential</span>
+              <span className="text-orange-800">Pawtential</span>
             </motion.h1>
 
             <motion.p
-              className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed"
+              className="text-xl md:text-2xl bg-gradient-to-r from-red-400 to-orange-300 bg-clip-text text-transparent mb-8 max-w-3xl mx-auto leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              It's not about fixing your dog. It's about educating you to show up for your dog —
-              <span className="font-semibold text-gray-800"> physically, emotionally, mentally.</span>
+              It's not about fixing your dog. It's about educating <i className="font-bo">you</i> to show up for your dog —
+              <span className="font-semibold text-orange-800"> physically, emotionally, mentally.</span>
             </motion.p>
 
             <motion.div
@@ -198,7 +198,9 @@ export default function LandingPage() {
             >
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white px-8 py-4 text-lg"
+                className="bg-gradient-to-r from-red-400 to-orange-300 
+                rounded-full border border-transparent text-white px-8 py-4 text-lg
+                hover:shadow-xl hover:shadow-orange-600/20 duration-100 transition-all"
               >
                 Start Your Journey
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -206,28 +208,77 @@ export default function LandingPage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="bg-white/50 backdrop-blur-sm border-gray-200 hover:bg-white/70 px-8 py-4 text-lg"
+                className="px-8 rounded-full text-orange-800 bg-white/30 duration-100 transition-all 
+                py-4 text-lg shadow-xl shadow-orange-600/20 border border-orange-200/50
+                hover:bg-white/20 hover:shadow-lg hover:shadow-orange-600/20 hover:text-orange-700"
               >
                 Try AI Coach Free
               </Button>
             </motion.div>
           </motion.div>
         </div>
+
+<div className="relative w-full max-w-7xl mx-auto mt-10">
+
+{/* Video Background */}
+<video
+  src="/running2.mp4"
+  autoPlay
+  loop
+  muted
+  playsInline
+  preload="auto"
+  className="w-full h-auto opacity-80"
+  style={{
+    WebkitMaskImage: `
+      linear-gradient(to top, transparent 0%, black 45%, black 65%, transparent 100%),
+      linear-gradient(to left, transparent 0%, black 45%, black 85%, transparent 100%)
+    `,
+    maskImage: `
+      linear-gradient(to top, transparent 0%, black 45%, black 65%, transparent 100%),
+      linear-gradient(to left, transparent 0%, black 45%, black 55%, transparent 100%)
+    `,
+    WebkitMaskComposite: 'intersect',
+    maskComposite: 'intersect',
+    WebkitMaskRepeat: 'no-repeat',
+    maskRepeat: 'no-repeat',
+  }}
+/>
+
+{/* Overlay Content */}
+<motion.div 
+  className="hidden md:flex absolute inset-0 flex-col items-center justify-center text-center px-4"
+  {...fadeInUp}
+>
+  <h2 className="text-4xl md:text-5xl font-bold mb-4">
+    <span className="text-black">
+      Features That Actually Help
+    </span>
+  </h2>
+  <p className="text-xl text-black max-w-2xl">
+    Everything you need to build a stronger relationship with your dog
+  </p>
+</motion.div>
+
+</div>
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <motion.div className="text-center mb-16" {...fadeInUp}>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
-                Features That Actually Help
-              </span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Everything you need to build a stronger relationship with your dog
-            </p>
-          </motion.div>
+        <motion.div 
+  className="text-center mb-16 block md:hidden" 
+  {...fadeInUp}
+>
+  <h2 className="text-4xl md:text-5xl font-bold mb-4">
+    <span className="bg-gradient-to-r from-red-400 via-orange-300 to-red-400 bg-clip-text text-transparent">
+      Features That Actually Help
+    </span>
+  </h2>
+  <p className="text-xl text-orange-800 max-w-2xl mx-auto">
+    Everything you need to build a stronger relationship with your dog
+  </p>
+</motion.div>
 
           <motion.div
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
@@ -238,15 +289,15 @@ export default function LandingPage() {
           >
             {features.map((feature, index) => (
               <motion.div key={index} variants={fadeInUp}>
-                <Card className="h-full bg-white/60 backdrop-blur-sm border-white/20 hover:bg-white/80 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <Card className="h-full rounded-2xl bg-white/30 backdrop-blur-sm border-white/80 hover:bg-white/80 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                   <CardHeader>
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-green-500 rounded-lg flex items-center justify-center mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-r from-red-400 to-orange-300 rounded-full flex items-center justify-center mb-4">
                       <feature.icon className="w-6 h-6 text-white" />
                     </div>
-                    <CardTitle className="text-xl font-bold text-gray-800">{feature.title}</CardTitle>
+                    <CardTitle className="text-xl font-bold text-black">{feature.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-gray-600 text-base leading-relaxed">
+                    <CardDescription className="text-black text-base leading-relaxed">
                       {feature.description}
                     </CardDescription>
                   </CardContent>
@@ -258,21 +309,21 @@ export default function LandingPage() {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <motion.div className="text-center mb-16" {...fadeInUp}>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-red-400 to-orange-300 bg-clip-text text-transparent">
                 Choose Your Plan
               </span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-orange-800 max-w-2xl mx-auto">
               Start free, upgrade when you're ready to unlock your dog's full potential
             </p>
           </motion.div>
 
           <motion.div
-            className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto"
+            className="grid md:grid-cols-3 py-2 gap-8 max-w-5xl mx-auto"
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
@@ -281,15 +332,15 @@ export default function LandingPage() {
             {pricingTiers.map((tier, index) => (
               <motion.div key={index} variants={fadeInUp}>
                 <Card
-                  className={`h-full relative ${
+                  className={`h-full relative rounded-2xl ${
                     tier.popular
-                      ? "bg-gradient-to-b from-orange-50 to-pink-50 border-orange-200 shadow-xl scale-105"
-                      : "bg-white/60 backdrop-blur-sm border-white/20"
+                      ? "bg-gradient-to-b from-red-400/20 to-orange-300/20 border-orange-200 shadow-xl hover:scale-105"
+                      : "bg-white/50 hover:bg-white backdrop-blur-sm border-white/80"
                   } hover:shadow-xl transition-all duration-300`}
                 >
                   {tier.popular && (
                     <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                      <Badge className="bg-gradient-to-r from-orange-500 to-pink-500 text-white px-4 py-1">
+                      <Badge className="shadow-lg bg-gradient-to-r from-red-400 to-orange-300 text-white px-4 py-1">
                         <Star className="w-3 h-3 mr-1" />
                         Most Popular
                       </Badge>
@@ -300,9 +351,9 @@ export default function LandingPage() {
                     <CardTitle className="text-2xl font-bold text-gray-800">{tier.name}</CardTitle>
                     <div className="mt-4">
                       <span className="text-4xl font-bold text-gray-900">{tier.price}</span>
-                      <span className="text-gray-600 ml-1">/{tier.period}</span>
+                      <span className="text-black ml-1">/{tier.period}</span>
                     </div>
-                    <CardDescription className="text-gray-600 mt-2">{tier.description}</CardDescription>
+                    <CardDescription className="text-black mt-2">{tier.description}</CardDescription>
                   </CardHeader>
 
                   <CardContent className="space-y-4">
@@ -316,10 +367,10 @@ export default function LandingPage() {
                     </ul>
 
                     <Button
-                      className={`w-full mt-8 ${
+                      className={`w-full mt-8  ${
                         tier.popular
-                          ? "bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white"
-                          : "bg-white hover:bg-gray-50 text-gray-800 border border-gray-200"
+                          ? "bg-gradient-to-r from-red-400 to-orange-300 rounded-full border border-transparent text-white px-8 py-4 text-sm hover:shadow-xl hover:shadow-orange-600/20 duration-100 transition-all"
+                          : "px-8 rounded-full text-orange-800 bg-white/30 duration-100 transition-all py-4 text-sm border:transparent hover:bg-transparent shadow-xl shadow-orange-600/20 border border-orange-200/50 hover:shadow-lg hover:shadow-orange-600/20 hover:text-orange-700"
                       }`}
                       size="lg"
                     >
@@ -334,19 +385,22 @@ export default function LandingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="pb-20 px-4 sm:px-6 lg:px-8">
         <motion.div className="max-w-4xl mx-auto text-center" {...fadeInUp}>
-          <div className="bg-gradient-to-r from-orange-500 to-pink-500 rounded-3xl p-12 text-white relative overflow-hidden">
-            <div className="absolute inset-0 bg-black/10 backdrop-blur-sm"></div>
+          <div className="bg-gradient-to-r from-red-400 to-orange-300 rounded-3xl p-12 text-white relative overflow-hidden">
+            <div className="absolute inset-0"></div>
             <div className="relative z-10">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Be a Better Dog Owner?</h2>
               <p className="text-xl mb-8 opacity-90">
                 Join thousands of owners who've transformed their relationship with their dogs
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center ">
                 <Button
                   size="lg"
-                  className="bg-white text-orange-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold"
+                  className="px-8 rounded-full text-orange-800 bg-white duration-100 
+                  transition-all py-4 text-sm border:transparent hover:bg-white/80 
+                  shadow-xl shadow-orange-600/20 border border-orange-200/50 hover:shadow-lg 
+                  hover:shadow-orange-600/20 hover:text-orange-700"
                 >
                   Start Free Today
                   <ArrowRight className="ml-2 w-5 h-5" />
@@ -354,7 +408,8 @@ export default function LandingPage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-white text-white hover:bg-white/10 px-8 py-4 text-lg"
+                  className="border-white rounded-full bg-transparent text-white 
+                  hover:bg-white/10 hover:text-white px-8 py-4 text-lg"
                 >
                   Chat with AI Coach
                 </Button>
@@ -368,14 +423,16 @@ export default function LandingPage() {
       <footer className="py-12 px-4 sm:px-6 lg:px-8 bg-white/50 backdrop-blur-sm border-t border-white/20">
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
-            <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-pink-500 rounded-lg flex items-center justify-center">
-              <Heart className="w-5 h-5 text-white" />
+            <div className="w-12 h-12 bg-gradient-to-r from-red-400 to-orange-300 rounded-full flex items-center justify-center">
+              <Heart className="w-7 h-7 text-white" />
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-orange-600 to-pink-600 bg-clip-text text-transparent">
-              Pawtential
+            <span className="text-xl font-bold bg-gradient-to-r from-red-400 to-orange-300 bg-clip-text text-transparent">
+              K9Coach
             </span>
           </div>
-          <p className="text-gray-600">© 2024 Pawtential. Helping humans be better dog owners.</p>
+          <p className="text-black">
+  © {new Date().getFullYear()} Helping humans be better dog owners.
+</p>
         </div>
       </footer>
     </div>
