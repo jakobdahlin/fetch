@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Kumbh_Sans } from 'next/font/google';
-import Navbar from '@/components/Navbar'; // 👈 Import Navbar
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 const kumbhSans = Kumbh_Sans({
   subsets: ['latin'],
@@ -10,9 +11,8 @@ const kumbhSans = Kumbh_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'K9Coach',
+  title: 'Fetch',
   description: 'Helping humans be better dog owners',
-  generator: 'v0.dev',
 };
 
 export default function RootLayout({
@@ -23,8 +23,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={kumbhSans.className}>
       <body>
-        <Navbar /> {/* 👈 Navbar globally visible */}
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

@@ -1,6 +1,7 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, px } from "framer-motion"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -116,11 +117,11 @@ const pricingTiers = [
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-orange-100 via-pink-100 to-white">
+    <div className="min-h-screen ">
 
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-orange-100 via-pink-100 to-white">
         <div className="max-w-7xl mx-auto">
           <motion.div
             className="text-center"
@@ -134,8 +135,7 @@ export default function LandingPage() {
               transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
               className="inline-flex items-center space-x-2 shadow-xl shadow-orange-600/20 bg-white/30 backdrop-blur-sm border border-orange-200/50 rounded-full px-6 py-2 mb-8"
             >
-              <Sparkles className="w-4 h-4 text-orange-500" />
-              <span className="text-sm font-medium text-orange-800">Teach humans how to be better dog owners</span>
+              <span className="text-sm font-medium text-orange-800">Help your dog succeed by reinforcing what they do right — not punishing what they do wrong.</span>
             </motion.div>
 
             <motion.h1
@@ -145,7 +145,7 @@ export default function LandingPage() {
               transition={{ delay: 0.3, duration: 0.8 }}
             >
               <span className="bg-gradient-to-r from-red-400 to-orange-300 bg-clip-text text-transparent">
-                Unlock Your Dog's
+                Unlock your
               </span>
               <br />
               <span className="text-orange-800">Pawtential</span>
@@ -170,7 +170,7 @@ export default function LandingPage() {
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-red-400 to-orange-300 
-                rounded-full border border-transparent text-white px-8 py-4 text-lg
+                rounded-full border border-transparent text-white px-8 py-4 text-md
                 hover:shadow-xl hover:shadow-orange-600/20 duration-100 transition-all"
               >
                 Start Your Journey
@@ -180,10 +180,10 @@ export default function LandingPage() {
                 size="lg"
                 variant="outline"
                 className="px-8 rounded-full text-orange-800 bg-white/30 duration-100 transition-all 
-                py-4 text-lg shadow-xl shadow-orange-600/20 border border-orange-200/50
+                py-4 text-md shadow-xl shadow-orange-600/20 border border-orange-200/50
                 hover:bg-white/20 hover:shadow-lg hover:shadow-orange-600/20 hover:text-orange-700"
               >
-                Try AI Coach Free
+                Learn More
               </Button>
             </motion.div>
           </motion.div>
@@ -206,7 +206,7 @@ export default function LandingPage() {
       linear-gradient(to left, transparent 0%, black 45%, black 85%, transparent 100%)
     `,
     maskImage: `
-      linear-gradient(to top, transparent 0%, black 45%, black 65%, transparent 100%),
+      linear-gradient(to top, transparent 0%, black 65%, black 65%, transparent 100%),
       linear-gradient(to left, transparent 0%, black 45%, black 55%, transparent 100%)
     `,
     WebkitMaskComposite: 'intersect',
@@ -218,15 +218,15 @@ export default function LandingPage() {
 
 {/* Overlay Content */}
 <motion.div 
-  className="hidden md:flex absolute inset-0 flex-col items-center justify-center text-center px-4"
+  className="hidden md:flex absolute inset-0 flex-col justify-center ml-4 px-4"
   {...fadeInUp}
 >
   <h2 className="text-4xl md:text-5xl font-bold mb-4">
-    <span className="text-black">
-      Features That Actually Help
+    <span className="bg-gradient-to-r from-red-400 to-orange-300 bg-clip-text text-transparent">
+      Features that actually help
     </span>
   </h2>
-  <p className="text-xl text-black max-w-2xl">
+  <p className="text-xl text-orange-800 max-w-2xl">
     Everything you need to build a stronger relationship with your dog
   </p>
 </motion.div>
@@ -235,7 +235,7 @@ export default function LandingPage() {
       </section>
 
       {/* Features Section */}
-      <section className="pb-20 px-4 sm:px-6 lg:px-8">
+      <section className="pb-10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
         <motion.div 
   className="text-center mb-16 block md:hidden" 
@@ -243,7 +243,7 @@ export default function LandingPage() {
 >
   <h2 className="text-3xl md:text-5xl font-bold mb-4">
     <span className="bg-gradient-to-r from-red-400 to-orange-300 bg-clip-text text-transparent">
-      Features That Actually Help
+    Features that actually help
     </span>
   </h2>
   <p className="text-xl text-orange-800 max-w-2xl mx-auto">
@@ -260,15 +260,19 @@ export default function LandingPage() {
           >
             {features.map((feature, index) => (
               <motion.div key={index} variants={fadeInUp}>
-                <Card className="h-full rounded-2xl bg-white/30 backdrop-blur-sm border-white/80 hover:bg-white/80 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <Card className="h-full rounded-2xl 
+                bg-gradient-to-r from-red-400/10 to-orange-300/10 
+                hover:bg-gradient-to-r hover:from-red-400/20 hover:to-orange-300/20 
+                backdrop-blur-sm border-orange-300/50 
+                duration-300 hover:shadow-xl hover:-translate-y-1">
                   <CardHeader>
-                    <div className="w-12 h-12 bg-gradient-to-r from-red-400 to-orange-300 rounded-full flex items-center justify-center mb-4">
+                    <div className="hidden w-12 h-12 bg-gradient-to-r from-red-400 to-orange-300 rounded-full items-center justify-center mb-4">
                       <feature.icon className="w-6 h-6 text-white" />
                     </div>
-                    <CardTitle className="text-xl font-bold text-black">{feature.title}</CardTitle>
+                    <CardTitle className="text-xl font-bold bg-gradient-to-r from-red-400 to-orange-300 bg-clip-text text-transparent">{feature.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-black text-base leading-relaxed">
+                    <CardDescription className="text-orange-800 text-base leading-relaxed">
                       {feature.description}
                     </CardDescription>
                   </CardContent>
@@ -279,13 +283,21 @@ export default function LandingPage() {
         </div>
       </section>
 
+<div className="mx-4">
+      <div className="bg-[url('/dog3.jpg')] bg-cover bg-center bg-no-repeat max-w-5xl opacity-80 mx-auto mb-10 rounded-3xl h-[400px] overflow-hidden">
+  {/* Content here */}
+  <p></p>
+</div>
+</div>
+<div className="bg-gradient-to-b from-white via-pink-100 to-orange-100">
       {/* Pricing Section */}
       <section className="pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
+        
           <motion.div className="text-center mb-16" {...fadeInUp}>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               <span className="bg-gradient-to-r from-red-400 to-orange-300 bg-clip-text text-transparent">
-                Choose Your Plan
+                Choose your plan
               </span>
             </h2>
             <p className="text-xl text-orange-800 max-w-2xl mx-auto">
@@ -303,52 +315,48 @@ export default function LandingPage() {
             {pricingTiers.map((tier, index) => (
               <motion.div key={index} variants={fadeInUp}>
                 <Card
-                  className={`h-full relative rounded-2xl ${
-                    tier.popular
-                      ? "bg-gradient-to-b from-red-400/20 to-orange-300/20 border-orange-200 shadow-xl hover:scale-105"
-                      : "bg-white/50 hover:bg-white backdrop-blur-sm border-white/80"
-                  } hover:shadow-xl transition-all duration-300`}
-                >
-                  {tier.popular && (
-                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                      <Badge className="shadow-lg bg-gradient-to-r from-red-400 to-orange-300 text-white px-4 py-1">
-                        <Star className="w-3 h-3 mr-1" />
-                        Most Popular
-                      </Badge>
-                    </div>
-                  )}
+  className={`h-full flex flex-col rounded-2xl ${
+    tier.popular
+      ? "bg-gradient-to-b from-red-400/20 to-orange-300/20 border-orange-200 shadow-xl hover:shadow-3xl hover:scale-105"
+      : "bg-white/50 hover:bg-white backdrop-blur-sm border-orange-200/50 hover:border-white scale-95 hover:scale-100" 
+  } hover:shadow-xl transition-all duration-300`}
+>
 
-                  <CardHeader className="text-center pb-8">
-                    <CardTitle className="text-2xl font-bold text-gray-800">{tier.name}</CardTitle>
-                    <div className="mt-4">
-                      <span className="text-4xl font-bold text-gray-900">{tier.price}</span>
-                      <span className="text-black ml-1">/{tier.period}</span>
-                    </div>
-                    <CardDescription className="text-black mt-2">{tier.description}</CardDescription>
-                  </CardHeader>
+  <CardHeader className="text-center pb-8">
+    <CardTitle className="text-2xl font-bold text-gray-800">{tier.name}</CardTitle>
+    <div className="mt-4">
+      <span className="text-4xl font-bold text-gray-900">{tier.price}</span>
+      <span className="text-black ml-1">/{tier.period}</span>
+    </div>
+    <CardDescription className="text-black mt-2">{tier.description}</CardDescription>
+  </CardHeader>
 
-                  <CardContent className="space-y-4">
-                    <ul className="space-y-3">
-                      {tier.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-start space-x-3">
-                          <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-                          <span className="text-gray-700">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
+  <CardContent className="flex flex-col flex-grow space-y-4">
+    <ul className="space-y-3">
+      {tier.features.map((feature, featureIndex) => (
+        <li key={featureIndex} className="flex items-start space-x-3">
+          <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+          <span className="text-gray-700">{feature}</span>
+        </li>
+      ))}
+    </ul>
 
-                    <Button
-                      className={`w-full mt-8  ${
-                        tier.popular
-                          ? "bg-gradient-to-r from-red-400 to-orange-300 rounded-full border border-transparent text-white px-8 py-4 text-sm hover:shadow-xl hover:shadow-orange-600/20 duration-100 transition-all"
-                          : "px-8 rounded-full text-orange-800 bg-white/30 duration-100 transition-all py-4 text-sm border:transparent hover:bg-transparent shadow-xl shadow-orange-600/20 border border-orange-200/50 hover:shadow-lg hover:shadow-orange-600/20 hover:text-orange-700"
-                      }`}
-                      size="lg"
-                    >
-                      {tier.cta}
-                    </Button>
-                  </CardContent>
-                </Card>
+    {/* Spacer to push button down */}
+    <div className="flex-grow" />
+
+    <Button
+      className={`w-full ${
+        tier.popular
+          ? "bg-gradient-to-r from-red-400 to-orange-300 rounded-full border border-transparent text-white px-8 py-4 text-sm hover:shadow-xl hover:shadow-orange-600/20 duration-100 transition-all"
+          : "px-8 rounded-full text-orange-800 bg-white/30 duration-100 transition-all py-4 text-sm border:transparent hover:bg-transparent shadow-xl shadow-orange-600/20 border border-orange-200/50 hover:shadow-lg hover:shadow-orange-600/20 hover:text-orange-700"
+      }`}
+      size="lg"
+    >
+      {tier.cta}
+    </Button>
+  </CardContent>
+</Card>
+
               </motion.div>
             ))}
           </motion.div>
@@ -357,11 +365,13 @@ export default function LandingPage() {
 
       {/* CTA Section */}
       <section className="pb-20 px-4 sm:px-6 lg:px-8">
-        <motion.div className="max-w-4xl mx-auto text-center" {...fadeInUp}>
-          <div className="bg-gradient-to-r from-red-400 to-orange-300 rounded-3xl p-12 text-white relative overflow-hidden">
+        <motion.div className="max-w-5xl mx-auto text-center" {...fadeInUp}>
+        <div className="bg-[url('/dog2.jpg')] bg-cover bg-center bg-no-repeat rounded-3xl opacity-70">
+
+          <div className="bg-gradient-to-br from-orange-600/80 to-amber-500/40 rounded-3xl p-12 text-white relative overflow-hidden">
             <div className="absolute inset-0"></div>
             <div className="relative z-10">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Be a Better Dog Owner?</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to be a better dog owner?</h2>
               <p className="text-xl mb-8 opacity-90">
                 Join thousands of owners who've transformed their relationship with their dogs
               </p>
@@ -369,11 +379,11 @@ export default function LandingPage() {
                 <Button
                   size="lg"
                   className="px-8 rounded-full text-orange-800 bg-white duration-100 
-                  transition-all py-4 text-sm border:transparent hover:bg-white/80 
+                  transition-all py-4 text-lg border:transparent hover:bg-white/80 
                   shadow-xl shadow-orange-600/20 border border-orange-200/50 hover:shadow-lg 
                   hover:shadow-orange-600/20 hover:text-orange-700"
                 >
-                  Start Free Today
+                  Start your journey
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
                 <Button
@@ -382,30 +392,16 @@ export default function LandingPage() {
                   className="border-white rounded-full bg-transparent text-white 
                   hover:bg-white/10 hover:text-white px-8 py-4 text-lg"
                 >
-                  Chat with AI Coach
+                  Learn More
                 </Button>
               </div>
             </div>
           </div>
+          </div>
         </motion.div>
       </section>
+      </div>
 
-      {/* Footer */}
-      <footer className="py-12 px-4 sm:px-6 lg:px-8 bg-white/50 backdrop-blur-sm border-t border-white/20">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="flex items-center justify-center space-x-2 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-r from-red-400 to-orange-300 rounded-full flex items-center justify-center">
-              <Heart className="w-7 h-7 text-white" />
-            </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-red-400 to-orange-300 bg-clip-text text-transparent">
-              K9Coach
-            </span>
-          </div>
-          <p className="text-black">
-  © {new Date().getFullYear()} Helping humans be better dog owners.
-</p>
-        </div>
-      </footer>
     </div>
   )
 }

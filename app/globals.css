@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 ::selection {
@@ -101,4 +100,33 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.radial-blur {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0.2) 40%,
+    transparent 70%
+  );
+  filter: blur(60px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.blur-gradient-mask {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgb(255, 255, 255) 0%,
+    rgb(255, 255, 255) 40%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    rgb(255, 255, 255) 0%,
+    rgb(255, 255, 255) 40%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
