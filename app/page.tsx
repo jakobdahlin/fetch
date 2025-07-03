@@ -69,51 +69,53 @@ const features = [
 
 const pricingTiers = [
   {
-    name: "Basic",
-    price: "$20",
-    period: "month",
-    description: "Perfect for getting started",
+    name: "Single Class",
+    price: "$129",
+    period: "one-time",
+    description: "Pay once, access forever.",
     features: [
-      "Basic AI chat for simple questions",
-      "Access to community",
-      "Basic enrichment tips",
-      "Progress tracking",
+      "Access to the class you purchase",
+      "Graphic modules, exercises & guides",
+      "Lifetime access to that class",
+      "Certificate of completion",
     ],
-    cta: "Start Free",
+    cta: "View Classes",
     popular: false,
+    type: "single",
   },
   {
-    name: "Pro",
+    name: "Monthly Membership",
     price: "$49",
     period: "month",
-    description: "Everything you need to be a better dog owner",
+    description: "All classes, tools & community access.",
     features: [
-      "Full AI Dog Coach with image analysis",
-      "All training programs & lessons",
-      "Advanced behavior guides",
-      "Priority community support",
-      "Personalized training plans",
-      "Progress analytics",
+      "Access to all classes",
+      "Unlimited progress tracking",
+      "Behavior guides & bonus content",
+      "Access to the community",
+      "Cancel anytime",
     ],
-    cta: "Start Pro Trial",
-    popular: true,
+    cta: "Start Monthly",
+    popular: false,
+    type: "subscription",
   },
   {
-    name: "Annual",
-    price: "$499",
+    name: "Annual Membership",
+    price: "$390",
     period: "per year",
-    description: "Best value for committed owners",
+    description: "2 months free — best value!",
     features: [
-      "Everything in Pro",
-      "2 months free",
-      "Exclusive webinars",
+      "Everything in Monthly",
+      "Save 17% with annual billing",
+      "Priority support",
       "Early access to new features",
-      "Direct trainer consultations",
     ],
-    cta: "Save 31%",
-    popular: false,
+    cta: "Start Annual",
+    popular: true,
+    type: "subscription",
+    savingsPercent: Math.round((1 - (390 / (39 * 12))) * 100), // → 17%
   },
-]
+];
 
 export default function LandingPage() {
   return (
@@ -163,7 +165,7 @@ export default function LandingPage() {
 
             <motion.div
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 20 }} 
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.8 }}
             >
@@ -171,7 +173,7 @@ export default function LandingPage() {
                 size="lg"
                 className="bg-gradient-to-r from-red-400 to-orange-300 
                 rounded-full border border-transparent text-white px-8 py-4 text-md
-                hover:shadow-xl hover:shadow-orange-600/20 duration-100 transition-all"
+                md:hover:shadow-xl md:hover:shadow-orange-600/20 duration-100 transition-all"
               >
                 Start Your Journey
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -181,7 +183,7 @@ export default function LandingPage() {
                 variant="outline"
                 className="px-8 rounded-full text-orange-800 bg-white/30 duration-100 transition-all 
                 py-4 text-md shadow-xl shadow-orange-600/20 border border-orange-200/50
-                hover:bg-white/20 hover:shadow-lg hover:shadow-orange-600/20 hover:text-orange-700"
+                md:hover:bg-white/20 md:hover:shadow-lg md:hover:shadow-orange-600/20 md:hover:text-orange-700"
               >
                 Learn More
               </Button>
@@ -262,9 +264,9 @@ export default function LandingPage() {
               <motion.div key={index} variants={fadeInUp}>
                 <Card className="h-full rounded-2xl 
                 bg-gradient-to-r from-red-400/10 to-orange-300/10 
-                hover:bg-gradient-to-r hover:from-red-400/20 hover:to-orange-300/20 
+                md:hover:bg-gradient-to-r md:hover:from-red-400/20 md:hover:to-orange-300/20 
                 backdrop-blur-sm border-orange-300/50 
-                duration-300 hover:shadow-xl hover:-translate-y-1">
+                duration-300 md:hover:shadow-xl md:hover:-translate-y-1">
                   <CardHeader>
                     <div className="hidden w-12 h-12 bg-gradient-to-r from-red-400 to-orange-300 rounded-full items-center justify-center mb-4">
                       <feature.icon className="w-6 h-6 text-white" />
@@ -312,53 +314,59 @@ export default function LandingPage() {
             whileInView="animate"
             viewport={{ once: true }}
           >
-            {pricingTiers.map((tier, index) => (
-              <motion.div key={index} variants={fadeInUp}>
-                <Card
-  className={`h-full flex flex-col rounded-2xl ${
-    tier.popular
-      ? "bg-gradient-to-b from-red-400/20 to-orange-300/20 border-orange-200 shadow-xl hover:shadow-3xl hover:scale-105"
-      : "bg-white/50 hover:bg-white backdrop-blur-sm border-orange-200/50 hover:border-white scale-95 hover:scale-100" 
-  } hover:shadow-xl transition-all duration-300`}
->
-
-  <CardHeader className="text-center pb-8">
-    <CardTitle className="text-2xl font-bold text-gray-800">{tier.name}</CardTitle>
-    <div className="mt-4">
-      <span className="text-4xl font-bold text-gray-900">{tier.price}</span>
-      <span className="text-black ml-1">/{tier.period}</span>
-    </div>
-    <CardDescription className="text-black mt-2">{tier.description}</CardDescription>
-  </CardHeader>
-
-  <CardContent className="flex flex-col flex-grow space-y-4">
-    <ul className="space-y-3">
-      {tier.features.map((feature, featureIndex) => (
-        <li key={featureIndex} className="flex items-start space-x-3">
-          <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
-          <span className="text-gray-700">{feature}</span>
-        </li>
-      ))}
-    </ul>
-
-    {/* Spacer to push button down */}
-    <div className="flex-grow" />
-
-    <Button
-      className={`w-full ${
-        tier.popular
-          ? "bg-gradient-to-r from-red-400 to-orange-300 rounded-full border border-transparent text-white px-8 py-4 text-sm hover:shadow-xl hover:shadow-orange-600/20 duration-100 transition-all"
-          : "px-8 rounded-full text-orange-800 bg-white/30 duration-100 transition-all py-4 text-sm border:transparent hover:bg-transparent shadow-xl shadow-orange-600/20 border border-orange-200/50 hover:shadow-lg hover:shadow-orange-600/20 hover:text-orange-700"
-      }`}
-      size="lg"
+{pricingTiers.map((tier, index) => (
+  <motion.div key={index} variants={fadeInUp}>
+    <Card
+      className="h-full flex flex-col rounded-2xl gradient-to-b from-red-400/20 to-orange-300/20 border-orange-200
+      md:hover:shadow-lg md:hover:shadow-orange-600/20 duration-300 transition-all
+      md:hover:scale-105
+      "
     >
-      {tier.cta}
-    </Button>
-  </CardContent>
-</Card>
+      <CardHeader className="text-center pb-8">
+        <CardTitle className="text-2xl font-bold bg-gradient-to-r from-red-400 to-orange-300 bg-clip-text text-transparent">{tier.name}</CardTitle>
 
-              </motion.div>
-            ))}
+        <div className="mt-4 flex items-baseline justify-center gap-1">
+  {tier.period === "one-time" && (
+    <span className="text-md text-orange-800">from</span>
+  )}
+  <span className="text-4xl font-bold text-orange-800">{tier.price}</span>
+  {tier.period !== "one-time" && (
+    <span className="text-orange-800 ml-1">/{tier.period}</span>
+  )}
+</div>
+
+        <CardDescription className="text-orange-800 mt-2">
+          {tier.description}
+        </CardDescription>
+
+        {tier.savingsPercent && (
+          <div className="text-sm text-green-600 mt-2">
+            Save {tier.savingsPercent}% annually
+          </div>
+        )}
+      </CardHeader>
+
+      <CardContent className="flex flex-col flex-grow space-y-4">
+        <ul className="space-y-3">
+          {tier.features.map((feature, featureIndex) => (
+            <li key={featureIndex} className="flex items-start space-x-3">
+              <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+              <span className="text-orange-800">{feature}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div className="flex-grow" />
+
+        <Button
+          className="bg-gradient-to-r from-red-400 to-orange-300 rounded-full border border-transparent text-white px-8 py-4 text-sm md:hover:shadow-xl md:hover:shadow-orange-600/20 duration-100 transition-all"
+        >
+          {tier.cta}
+        </Button>
+      </CardContent>
+    </Card>
+  </motion.div>
+))}
           </motion.div>
         </div>
       </section>

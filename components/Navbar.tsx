@@ -35,7 +35,7 @@ export default function Navbar() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      y: 0,
+      y: -10,
       transition: { duration: 0.5, ease: "easeInOut" },
     },
     exit: {
@@ -47,10 +47,10 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      initial={{ opacity: 0, y: -20 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="fixed top-3 left-0 right-0 z-[100] flex justify-center mx-4"
+      className="fixed top-3 left-0 right-0 z-[100] flex justify-center mx-2"
     >
       <motion.div
         layout
@@ -78,37 +78,46 @@ export default function Navbar() {
 
         {/* Dropdown menu */}
         <AnimatePresence>
-        {isOpen && (
-      <motion.div
-        initial={{ height: 0, opacity: 0 }}
-        animate={{ height: "auto", opacity: 1 }}
-        exit={{ height: 0, opacity: 0 }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="overflow-hidden"
-      >
-              <div className="flex flex-col pb-6 space-y-4">
-                {["Courses", "About", "Contact"].map((label, index) => (
-                  <motion.div key={index} variants={buttonVariants}>
-                    <Button className="w-full text-orange-800 text-md bg-transparent hover:bg-transparent">
-                      {label}
-                    </Button>
-                  </motion.div>
-                ))}
-                <motion.div variants={buttonVariants}>
-                  <Button className="w-full bg-gradient-to-r from-red-400 to-orange-300
-                    rounded-full border border-transparent text-white px-8 py-4 text-md
-                    hover:shadow-lg hover:shadow-orange-600/20 duration-100 transition-all">
-                    Log in
-                  </Button>
-                </motion.div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+  {isOpen && (
+    <motion.div
+      initial={{ height: 0, opacity: 0 }}
+      animate={{ height: "auto", opacity: 1 }}
+      exit={{ height: 0, opacity: 0 }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
+      className="overflow-hidden"
+    >
+      <div className="flex flex-col pb-6 space-y-4">
+        {[
+          { label: "Classes", href: "/classes" },
+          { label: "About", href: "/about" },
+          { label: "Contact", href: "/contact" },
+        ].map((item, index) => (
+<motion.div key={index} variants={buttonVariants}>
+  <Button asChild className="w-full text-orange-800 text-md bg-transparent hover:bg-transparent">
+    <Link href={item.href} onClick={() => setIsOpen(false)}>
+      {item.label}
+    </Link>
+  </Button>
+</motion.div>
+        ))}
+
+<motion.div variants={buttonVariants}>
+  <Button asChild className="w-full bg-gradient-to-r from-red-400 to-orange-300
+    rounded-full border border-transparent text-white px-8 py-4 text-md
+    hover:shadow-lg hover:shadow-orange-600/20 duration-100 transition-all">
+    <Link href="/login" onClick={() => setIsOpen(false)}>
+      Log in
+    </Link>
+  </Button>
+</motion.div>
+      </div>
+    </motion.div>
+  )}
+</AnimatePresence>
       </motion.div>
 
       {/* Desktop Navbar */}
-      <div className="hidden md:flex w-full max-w-7xl justify-between items-center px-4 py-2 bg-white/30 
+      <div className="hidden md:flex w-full max-w-6xl justify-between items-center px-4 py-2 bg-white/30 
       rounded-full backdrop-blur-lg border border-white shadow-xl shadow-orange-400/20">
         {/* Logo */}
         <div className="flex items-center space-x-2">
@@ -119,13 +128,12 @@ export default function Navbar() {
       className="w-full h-full object-contain"
     />
   </Link>
-
         </div>
 
         {/* Menu */}
         <div className="flex items-center space-x-6">
         <Button asChild className="bg-transparent text-md text-orange-800 hover:bg-transparent hover:text-orange-400/50">
-        <Link href="/courses">Courses</Link>
+        <Link href="/classes">Classes</Link>
         </Button>
         <Button asChild className="bg-transparent text-md text-orange-800 hover:bg-transparent hover:text-orange-400/50">
         <Link href="/about">About</Link>
