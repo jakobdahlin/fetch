@@ -3,6 +3,7 @@ import './globals.css';
 import { Kumbh_Sans } from 'next/font/google';
 import Navbar from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
+import { LanguageProvider } from "@/app/contexts/language-context";
 
 const kumbhSans = Kumbh_Sans({
   subsets: ['latin'],
@@ -21,11 +22,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={kumbhSans.className}>
-      <body className="min-h-screen overflow-x-hidden bg-white">
-        <Navbar />
-        {children}
-        <Footer />
+    <html lang="en">
+      <body>
+        <LanguageProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );
